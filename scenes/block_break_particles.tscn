@@ -1,0 +1,40 @@
+[gd_scene format=3 uid="uid://b6idwo4ukioda"]
+
+[ext_resource type="Script" uid="uid://c68kru5jj10mu" path="res://scenes/block_break_particles.gd" id="1_hkmrw"]
+
+[sub_resource type="Curve" id="Curve_8fmm2"]
+_data = [Vector2(0.72483224, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.47418243), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_hkmrw"]
+curve = SubResource("Curve_8fmm2")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_um8mk"]
+emission_shape = 3
+emission_box_extents = Vector3(1, 1, 1)
+direction = Vector3(0, 1, 0)
+spread = 30.0
+initial_velocity_min = 1.0
+initial_velocity_max = 2.0
+scale_min = 0.79999995
+scale_max = 1.4
+scale_curve = SubResource("CurveTexture_hkmrw")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5t286"]
+albedo_color = Color(0.4081795, 0.23069882, 0.14645717, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_u70gj"]
+material = SubResource("StandardMaterial3D_5t286")
+size = Vector3(0.2, 0.2, 0.2)
+
+[node name="GPUParticles3D" type="GPUParticles3D" unique_id=2017068299]
+emitting = false
+amount = 32
+one_shot = true
+explosiveness = 1.0
+fixed_fps = 60
+process_material = SubResource("ParticleProcessMaterial_um8mk")
+draw_pass_1 = SubResource("BoxMesh_u70gj")
+script = ExtResource("1_hkmrw")
+
+[connection signal="finished" from="." to="." method="_on_finished"]

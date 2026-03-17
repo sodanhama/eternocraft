@@ -1,6 +1,10 @@
 [gd_scene format=3 uid="uid://je805rsnbyru"]
 
 [ext_resource type="Script" uid="uid://cn8drnuvhv6yw" path="res://scripts/player.gd" id="1_3vyb7"]
+[ext_resource type="Texture2D" path="res://resources/icons/dirt.png" id="2_qlg0r"]
+[ext_resource type="Texture2D" path="res://resources/icons/bricks_grey.png" id="3_tuyoq"]
+[ext_resource type="Texture2D" path="res://resources/icons/wood.png" id="4_fjrip"]
+[ext_resource type="Texture2D" path="res://resources/icons/woodplanks.png" id="5_smehm"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_u8vuu"]
 radius = 1.0
@@ -25,3 +29,26 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 
 [node name="RayCast3D" type="RayCast3D" parent="Camera3D" unique_id=1780865854]
 target_position = Vector3(0, 0, -8)
+
+[node name="Hotbar" type="ItemList" parent="." unique_id=1236230990]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -170.0
+offset_top = -98.0
+offset_right = 170.0
+offset_bottom = -20.0
+grow_horizontal = 2
+grow_vertical = 0
+item_count = 4
+max_columns = 4
+item_0/text = "1"
+item_0/icon = ExtResource("2_qlg0r")
+item_1/text = "2"
+item_1/icon = ExtResource("3_tuyoq")
+item_2/text = "3"
+item_2/icon = ExtResource("4_fjrip")
+item_3/text = "4"
+item_3/icon = ExtResource("5_smehm")
