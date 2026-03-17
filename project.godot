@@ -15,7 +15,7 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 [application]
 
 config/name="eternocraft"
-run/main_scene="uid://dkoj3o1duuc2m"
+run/main_scene="uid://b4xfkrml6ufrm"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
 

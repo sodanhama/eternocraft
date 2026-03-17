@@ -1,8 +1,9 @@
-[gd_scene format=3 uid="uid://dkoj3o1duuc2m"]
+[gd_scene format=3 uid="uid://b4xfkrml6ufrm"]
 
-[ext_resource type="PackedScene" uid="uid://je805rsnbyru" path="res://scenes/player.tscn" id="2_rwgxs"]
-[ext_resource type="MeshLibrary" uid="uid://cep6efwrpwchd" path="res://resources/blocks.tres" id="3_4wyf3"]
-[ext_resource type="Script" uid="uid://cm7w8l2m2qod2" path="res://scripts/grid_map.gd" id="3_k0juu"]
+[ext_resource type="Script" uid="uid://4n6gaeff4dt2" path="res://scripts/main_menu.gd" id="1_wu84c"]
+[ext_resource type="MeshLibrary" uid="uid://cep6efwrpwchd" path="res://resources/blocks.tres" id="2_wu84c"]
+[ext_resource type="Script" uid="uid://cm7w8l2m2qod2" path="res://scripts/grid_map.gd" id="3_8ln24"]
+[ext_resource type="Script" uid="uid://cgscldhwl0qf5" path="res://scripts/v_box_container.gd" id="3_bqqt6"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_nnsk1"]
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
@@ -24,10 +25,9 @@ albedo_color = Color(0.086478375, 0.2695559, 0.47591305, 0.7294118)
 [sub_resource type="PlaneMesh" id="PlaneMesh_4wyf3"]
 material = SubResource("StandardMaterial3D_rwgxs")
 size = Vector2(5000, 5000)
-subdivide_width = 10
-subdivide_depth = 10
 
 [node name="World" type="Node3D" unique_id=44084682]
+script = ExtResource("1_wu84c")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1779637092]
 environment = SubResource("Environment_4wyf3")
@@ -36,17 +36,51 @@ environment = SubResource("Environment_4wyf3")
 transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
 shadow_enabled = true
 
-[node name="Player" parent="." unique_id=519883352 instance=ExtResource("2_rwgxs")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 3, 4)
-
 [node name="GridMap" type="GridMap" parent="." unique_id=1071738366]
-mesh_library = ExtResource("3_4wyf3")
+mesh_library = ExtResource("2_wu84c")
 data = {
 "cells": PackedInt32Array(-131072, 0, 2, -131072, 1, 2, -131072, 2, 2, -131072, 3, 2, -131071, 0, 2, -131071, 1, 2, -131071, 2, 2, -131071, 3, 2, -131070, 0, 2, -131070, 1, 2, -131070, 2, 2, -131070, 3, 2, -131069, 0, 2, -131069, 1, 2, -131069, 2, 2, -131069, 3, 2, -131068, 0, 2, -131068, 1, 2, -131068, 2, 2, -131068, 3, 2, -131067, 0, 2, -131067, 1, 2, -131067, 2, 2, -131067, 3, 2, -65540, 1, 2, -65540, 2, 2, -65540, 3, 2, -65539, 1, 2, -65539, 2, 2, -65539, 3, 2, -65538, 1, 2, -65538, 2, 2, -65538, 3, 2, -65537, 1, 2, -65537, 2, 2, -65537, 3, 2, -65540, 65533, 2, -65540, 65534, 2, -65540, 65535, 2, -65540, 0, 2, -65539, 65533, 2, -65539, 65534, 2, -65539, 65535, 2, -65539, 0, 2, -65538, 65533, 2, -65538, 65534, 2, -65538, 65535, 2, -65538, 0, 2, -65537, 65533, 2, -65537, 65534, 2, -65537, 65535, 2, -65537, 0, 2, -131072, 65533, 2, -131072, 65534, 2, -131072, 65535, 2, -131071, 65533, 2, -131071, 65534, 2, -131071, 65535, 2, -131070, 65533, 2, -131070, 65534, 2, -131070, 65535, 2, -131069, 65533, 2, -131069, 65534, 2, -131069, 65535, 2, -131068, 65533, 2, -131068, 65534, 2, -131068, 65535, 2, -131067, 65533, 2, -131067, 65534, 2, -131067, 65535, 2, -4, 65533, 5, -4, 65534, 5, -4, 65535, 5, -4, 0, 5, -4, 1, 5, -4, 2, 5, -4, 3, 5, -3, 65533, 5, -3, 65534, 5, -3, 65535, 5, -3, 0, 5, -3, 1, 5, -3, 2, 5, -3, 3, 5, -2, 65533, 5, -2, 65534, 5, -2, 65535, 5, -2, 0, 5, -2, 1, 5, -2, 2, 5, -2, 3, 5, -1, 65533, 5, -1, 65534, 5, -1, 65535, 5, -1, 0, 5, -1, 1, 5, -1, 2, 5, -1, 3, 5, -65536, 65533, 5, -65536, 65534, 5, -65536, 65535, 5, -65536, 0, 5, -65536, 1, 5, -65536, 2, 5, -65536, 3, 5, -65535, 65533, 5, -65535, 65534, 5, -65535, 65535, 5, -65535, 0, 5, -65535, 1, 5, -65535, 2, 5, -65535, 3, 5, -65534, 65533, 5, -65534, 65534, 5, -65534, 65535, 5, -65534, 0, 5, -65534, 1, 5, -65534, 2, 5, -65534, 3, 5, -65533, 65533, 5, -65533, 65534, 5, -65533, 65535, 5, -65533, 0, 5, -65533, 1, 5, -65533, 2, 5, -65533, 3, 5, -65532, 65533, 5, -65532, 65534, 5, -65532, 65535, 5, -65532, 0, 5, -65532, 1, 5, -65532, 2, 5, -65532, 3, 5, -65531, 65533, 5, -65531, 65534, 5, -65531, 65535, 5, -65531, 0, 5, -65531, 1, 5, -65531, 2, 5, -65531, 3, 5, 2, 65535, 3, 2, 0, 3, 2, 1, 3, 65535, 65534, 3, 0, 65534, 3, 1, 65534, 3, 65534, 65535, 3, 65534, 0, 3, 65534, 1, 3, 65534, 2, 3, 2, 2, 3, 131071, 65534, 3, 65536, 65534, 3, 65537, 65534, 3, 131070, 65535, 3, 131070, 0, 3, 131070, 1, 3, 131070, 2, 3, 65538, 65535, 3, 65538, 0, 3, 65538, 1, 3, 65538, 2, 3, 0, 65535, 3, 131072, 65533, 3)
 }
-script = ExtResource("3_k0juu")
+script = ExtResource("3_8ln24")
 metadata/_editor_floor_ = Vector3(0, 2, 0)
 
 [node name="Sea" type="MeshInstance3D" parent="." unique_id=1286613584]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 0)
 mesh = SubResource("PlaneMesh_4wyf3")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1617447558]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -212.5
+offset_top = -119.5
+offset_right = 212.5
+offset_bottom = 119.5
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("3_bqqt6")
+
+[node name="NewGameButton" type="Button" parent="VBoxContainer" unique_id=1330050436]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "New Game"
+
+[node name="LoadButton" type="Button" parent="VBoxContainer" unique_id=820724033]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "Load"
+
+[node name="QuitButton" type="Button" parent="VBoxContainer" unique_id=1310145656]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "Quit"
+
+[node name="CameraPivot" type="Node3D" parent="." unique_id=896134336]
+
+[node name="Camera3D" type="Camera3D" parent="CameraPivot" unique_id=1052597115]
+transform = Transform3D(1, 0, 0, 0, 0.9848078, 0.1736482, 0, -0.1736482, 0.9848078, 1.0961013, 2.3861914, 13.983696)
+
+[connection signal="pressed" from="VBoxContainer/NewGameButton" to="VBoxContainer" method="_on_new_game_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/QuitButton" to="VBoxContainer" method="_on_quit_button_pressed"]
